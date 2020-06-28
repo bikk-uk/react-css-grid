@@ -12,7 +12,9 @@
     "lint": "tsc --noEmit && eslint '*/**/*.{ts,tsx}' --quiet --fix",
     "build": "tsc",
     "clean": "rm -rf dist/*",
-    "release": "yarn && yarn clean && yarn build && yarn test && yarn lint"
+    "release": "yarn && yarn clean && yarn build && yarn test && yarn lint",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -51,6 +53,7 @@
     "jest": "^26.0.1",
     "prettier": "^2.0.5",
     "style-loader": "^1.2.1",
+    "snyk": "^1.349.0",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.5",
     "webpack": "^4.43.0",
@@ -59,5 +62,6 @@
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
-  }
+  },
+  "snyk": true
 }
