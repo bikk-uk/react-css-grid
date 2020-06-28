@@ -9,4 +9,4 @@ A thin wrapper to help make CSS Grid simpler and more expressive
 ![npm](https://img.shields.io/npm/v/@react-css/grid)
 ![NPM](https://img.shields.io/npm/l/@react-css/grid)
 
-**Is a Work in Progress**
+**Is a Work in Progress** - For a related package check out [@react-css/flex](https://www.npmjs.com/package/@react-css/flex)
