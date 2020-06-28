@@ -11,5 +11,5 @@ class Grid extends react_1.default.Component {
     }
 }
 exports.Grid = Grid;
-Grid.Item = react_1.default.createElement("div", null);
+Grid.Item = (react_1.default.createElement("div", null));
 exports.default = Grid;
