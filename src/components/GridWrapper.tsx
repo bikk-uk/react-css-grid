@@ -1,11 +1,18 @@
 // Libraries
 import React from 'react'
 
-export class Grid extends React.Component {
-  static Item = (<div></div>)
+// Props
+import type { GridContainerProps } from '../index'
+
+// Components
+import GridItem from './GridItem'
+import GridContainer from './GridContainer'
+
+export class Grid extends React.Component<GridContainerProps> {
+  static Item = GridItem
 
   render(): React.ReactElement {
-    return <div {...this.props} />
+    return <GridContainer {...this.props} />
   }
 }
 
