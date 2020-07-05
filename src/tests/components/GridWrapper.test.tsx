@@ -7,10 +7,14 @@ import { matchesSnapshot } from '../helpers/snapshots'
 // Tested Module (export named as it would be)
 import Grid from '../../components/GridWrapper'
 
-describe('<FlexWrapper />', () => {
-  it('renders an empty div', async () => {
+describe('<GridWrapper />', () => {
+  it('renders an empty grid container', async () => {
     const component = <Grid />
-    const snapshot = `<div />`
+    const snapshot = `
+<div
+  style="display: grid;"
+/>
+`
     matchesSnapshot(component, snapshot)
   })
 })
