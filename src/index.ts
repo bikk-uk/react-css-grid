@@ -8,6 +8,7 @@ import type {
   GridColumnGapProperty,
   GridRowGapProperty,
   JustifyItemsProperty,
+  AlignItemsProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -77,6 +78,24 @@ type JustifyItemsCSS =
       justifyItems?: JustifyItemsProperty
     }
 
+type AlignItemsCSS =
+  | {
+      // 'align-items' short
+      alignItemsStart?: boolean
+      alignItemsEnd?: boolean
+      alignItemsCenter?: boolean
+      alignItemsStretch?: boolean
+      alignItems?: never
+    }
+  | {
+      // 'align-items' manual
+      alignItemsStart?: never
+      alignItemsEnd?: never
+      alignItemsCenter?: never
+      alignItemsStretch?: never
+      alignItems?: AlignItemsProperty
+    }
+
 export type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -86,6 +105,7 @@ export type GridContainerProps = DivProps &
   GridGapCSS &
   GridColumnGapCSS &
   GridRowGapCSS &
-  JustifyItemsCSS
+  JustifyItemsCSS &
+  AlignItemsCSS
 
 export type GridItemProps = DivProps

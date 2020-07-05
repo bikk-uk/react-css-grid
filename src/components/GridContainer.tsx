@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react'
-import { JustifyItemsProperty } from 'csstype'
+import { JustifyItemsProperty, AlignItemsProperty } from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
@@ -41,6 +41,14 @@ function GridContainer({
   justifyItemsStretch,
   // 'justify-items' manual
   justifyItems,
+
+  // 'align-items' short
+  alignItemsStart,
+  alignItemsEnd,
+  alignItemsCenter,
+  alignItemsStretch,
+  // 'align-items' manual
+  alignItems,
 
   // required
   style = {},
@@ -117,6 +125,19 @@ function GridContainer({
     return value ? { justifyItems: value } : {}
   }, [justifyItems, justifyItemsStart, justifyItemsEnd, justifyItemsCenter, justifyItemsStretch])
 
+  const alignItemsStyle = React.useMemo((): React.CSSProperties => {
+    // the manual version has been provided, that takes precedence
+    if (alignItems) return { alignItems }
+    // see if a specific value has been provided, first come first serve
+    checkOverlapping('align-items', alignItemsStart, alignItemsEnd, alignItemsCenter, alignItemsStretch)
+    let value: AlignItemsProperty | null = null
+    if (alignItemsStart) value = 'start'
+    else if (alignItemsEnd) value = 'end'
+    else if (alignItemsCenter) value = 'center'
+    else if (alignItemsStretch) value = 'stretch'
+    return value ? { alignItems: value } : {}
+  }, [alignItems, alignItemsStart, alignItemsEnd, alignItemsCenter, alignItemsStretch])
+
   return (
     <div
       style={{
@@ -129,6 +150,7 @@ function GridContainer({
         ...gridColumnGapStyle,
         ...gridRowGapStyle,
         ...justifyItemsStyle,
+        ...alignItemsStyle,
         ...style,
       }}
       {...rest}>
