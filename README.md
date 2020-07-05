@@ -25,7 +25,7 @@ import Grid from '@react-css/grid'
 
 ## Usage
 
-All components are `<div />`s with the React props fully exposed.
+All components are `<div />`s with the React typed props fully exposed. Each additional Grid related prop also uses `React.CSSProperties` types (provided by the underlying [csstype](https://www.npmjs.com/package/csstype) library).
 
 ### Grid
 
@@ -116,7 +116,7 @@ To simplify, you can use:
 <Grid justifyItemsStretch></Grid> // justify-items: stretch;
 ```
 
-_These are first come first served, in this order. They cannot be used if you have already provided the `justifyItems` prop. Providing multiple will result in a console warning_
+_These are first come first served, in this order. They cannot be used if you have already provided the `justifyItems` prop. Providing multiple will result in a console warning._
 
 #### Align Items
 
@@ -137,7 +137,7 @@ To simplify, you can use:
 <Grid alignItemsStretch></Grid> // align-items: stretch;
 ```
 
-_These are first come first served, in this order. They cannot be used if you have already provided the `alignItems` prop. Providing multiple will result in a console warning_
+_These are first come first served, in this order. They cannot be used if you have already provided the `alignItems` prop. Providing multiple will result in a console warning._
 
 #### Justify Content
 
@@ -161,7 +161,7 @@ To simplify, you can use:
 <Grid justifyContentSpaceEvenly></Grid> // justify-content: space-evenly;
 ```
 
-_These are first come first served, in this order. They cannot be used if you have already provided the `justifyContent` prop. Providing multiple will result in a console warning_
+_These are first come first served, in this order. They cannot be used if you have already provided the `justifyContent` prop. Providing multiple will result in a console warning._
 
 #### Align Content
 
@@ -185,7 +185,7 @@ To simplify, you can use:
 <Grid alignContentSpaceEvenly></Grid> // align-content: space-evenly;
 ```
 
-_These are first come first served, in this order. They cannot be used if you have already provided the `alignContent` prop. Providing multiple will result in a console warning_
+_These are first come first served, in this order. They cannot be used if you have already provided the `alignContent` prop. Providing multiple will result in a console warning._
 
 #### Grid Auto Flow
 
@@ -205,7 +205,7 @@ To simplify, you can use:
 <Grid autoFlowDense></Grid> // grid-auto-flow: dense;
 ```
 
-_These are first come first served, in this order. They cannot be used if you have already provided the `autoFlow` prop. Providing multiple will result in a console warning_
+_These are first come first served, in this order. They cannot be used if you have already provided the `autoFlow` prop. Providing multiple will result in a console warning._
 
 #### Grid Auto Rows
 
