@@ -16,6 +16,16 @@ import type {
   PlaceContentProperty,
   GridAutoRowsProperty,
   GridAutoColumnsProperty,
+  GridColumnStartProperty,
+  GridColumnEndProperty,
+  GridRowEndProperty,
+  GridRowStartProperty,
+  GridRowProperty,
+  GridColumnProperty,
+  JustifySelfProperty,
+  AlignSelfProperty,
+  GridAreaProperty,
+  PlaceSelfProperty,
 } from 'csstype'
 declare type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 declare type DisplayCSS = {
@@ -145,6 +155,60 @@ declare type GridAutoRowsCSS = {
 declare type GridAutoColumnsCSS = {
   autoColumns?: GridAutoColumnsProperty<string | 0>
 }
+declare type GridColumnStartCSS = {
+  columnStart?: GridColumnStartProperty
+}
+declare type GridColumnEndCSS = {
+  columnEnd?: GridColumnEndProperty
+}
+declare type GridRowStartCSS = {
+  rowStart?: GridRowStartProperty
+}
+declare type GridRowEndCSS = {
+  rowEnd?: GridRowEndProperty
+}
+declare type GridRowCSS = {
+  row?: GridRowProperty
+}
+declare type GridColumnCSS = {
+  column?: GridColumnProperty
+}
+declare type GridAreaCSS = {
+  area?: GridAreaProperty
+}
+declare type JustifySelfCSS =
+  | {
+      justifySelfStart?: boolean
+      justifySelfEnd?: boolean
+      justifySelfCenter?: boolean
+      justifySelfStretch?: boolean
+      justifySelf?: never
+    }
+  | {
+      justifySelfStart?: never
+      justifySelfEnd?: never
+      justifySelfCenter?: never
+      justifySelfStretch?: never
+      justifySelf?: JustifySelfProperty
+    }
+declare type AlignSelfCSS =
+  | {
+      alignSelfStart?: boolean
+      alignSelfEnd?: boolean
+      alignSelfCenter?: boolean
+      alignSelfStretch?: boolean
+      alignSelf?: never
+    }
+  | {
+      alignSelfStart?: never
+      alignSelfEnd?: never
+      alignSelfCenter?: never
+      alignSelfStretch?: never
+      alignSelf?: AlignSelfProperty
+    }
+declare type PlaceSelfCSS = {
+  placeSelf?: PlaceSelfProperty
+}
 export declare type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -163,5 +227,15 @@ export declare type GridContainerProps = DivProps &
   GridAutoFlowCSS &
   GridAutoRowsCSS &
   GridAutoColumnsCSS
-export declare type GridItemProps = DivProps
+export declare type GridItemProps = DivProps &
+  GridColumnStartCSS &
+  GridColumnEndCSS &
+  GridRowStartCSS &
+  GridRowEndCSS &
+  GridRowCSS &
+  GridColumnCSS &
+  GridAreaCSS &
+  JustifySelfCSS &
+  AlignSelfCSS &
+  PlaceSelfCSS
 export {}
