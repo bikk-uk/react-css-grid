@@ -23,6 +23,9 @@ function GridItem({
   // 'grid-row'
   row,
 
+  // 'grid-area'
+  area,
+
   // 'justify-self' short
   justifySelfStart,
   justifySelfEnd,
@@ -38,6 +41,9 @@ function GridItem({
   alignSelfStretch,
   // 'align-self' short
   alignSelf,
+
+  // 'place-self'
+  placeSelf,
 
   // required
   style = {},
@@ -86,6 +92,13 @@ function GridItem({
     [row],
   )
 
+  const gridAreaStyle = React.useMemo(
+    (): React.CSSProperties => ({
+      gridArea: area,
+    }),
+    [area],
+  )
+
   const justifySelfStyle = React.useMemo((): React.CSSProperties => {
     // the manual version has been provided, that takes precedence
     if (justifySelf) return { justifySelf }
@@ -112,6 +125,13 @@ function GridItem({
     return value ? { alignSelf: value } : {}
   }, [alignSelf, alignSelfStart, alignSelfEnd, alignSelfCenter, alignSelfStretch])
 
+  const placeSelfStyle = React.useMemo(
+    (): React.CSSProperties => ({
+      placeSelf,
+    }),
+    [placeSelf],
+  )
+
   return (
     <div
       style={{
@@ -121,8 +141,10 @@ function GridItem({
         ...gridRowStartStyle,
         ...gridRowEndStyle,
         ...gridRowStyle,
+        ...gridAreaStyle,
         ...justifySelfStyle,
         ...alignSelfStyle,
+        ...placeSelfStyle,
         ...style,
       }}
       {...rest}>
