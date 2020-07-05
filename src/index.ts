@@ -20,6 +20,8 @@ import type {
   GridColumnEndProperty,
   GridRowEndProperty,
   GridRowStartProperty,
+  GridRowProperty,
+  GridColumnProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -191,24 +193,34 @@ type GridAutoColumnsCSS = {
   autoColumns?: GridAutoColumnsProperty<string | 0>
 }
 
-type GridColumnStart = {
+type GridColumnStartCSS = {
   // 'grid-column-start'
   columnStart?: GridColumnStartProperty
 }
 
-type GridColumnEnd = {
+type GridColumnEndCSS = {
   // 'grid-column-end'
   columnEnd?: GridColumnEndProperty
 }
 
-type GridRowStart = {
+type GridRowStartCSS = {
   // 'grid-row-start'
   rowStart?: GridRowStartProperty
 }
 
-type GridRowEnd = {
+type GridRowEndCSS = {
   // 'grid-row-end'
   rowEnd?: GridRowEndProperty
+}
+
+type GridRowCSS = {
+  // 'grid-row'
+  row?: GridRowProperty
+}
+
+type GridColumnCSS = {
+  // 'grid-column'
+  column?: GridColumnProperty
 }
 
 export type GridContainerProps = DivProps &
@@ -230,4 +242,10 @@ export type GridContainerProps = DivProps &
   GridAutoRowsCSS &
   GridAutoColumnsCSS
 
-export type GridItemProps = DivProps & GridColumnStart & GridColumnEnd & GridRowStart & GridRowEnd
+export type GridItemProps = DivProps &
+  GridColumnStartCSS &
+  GridColumnEndCSS &
+  GridRowStartCSS &
+  GridRowEndCSS &
+  GridRowCSS &
+  GridColumnCSS
