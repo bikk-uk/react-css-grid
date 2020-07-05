@@ -1,6 +1,12 @@
 // Libraries
 import React from 'react'
-import { JustifyItemsProperty, AlignItemsProperty, JustifyContentProperty, AlignContentProperty } from 'csstype'
+import {
+  JustifyItemsProperty,
+  AlignItemsProperty,
+  JustifyContentProperty,
+  AlignContentProperty,
+  GridAutoFlowProperty,
+} from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
@@ -28,10 +34,10 @@ function GridContainer({
   gap,
   gridGap,
 
-  // 'column-gap'
+  // 'grid-column-gap' or 'column-gap'
   columnGap,
 
-  // 'row-gap'
+  // 'grid-row-gap or row-gap'
   rowGap,
 
   // 'justify-items' short
@@ -71,6 +77,13 @@ function GridContainer({
   alignContentSpaceEvenly,
   // 'align-content' manual
   alignContent,
+
+  // 'grid-auto-flow' short
+  autoFlowRow,
+  autoFlowColumn,
+  autoFlowDense,
+  // 'grid-auto-flow' manual
+  autoFlow,
 
   // required
   style = {},
@@ -230,6 +243,18 @@ function GridContainer({
     alignContentSpaceEvenly,
   ])
 
+  const gridAutoFlowStyle = React.useMemo((): React.CSSProperties => {
+    // the manual version has been provided, that takes precedence
+    if (autoFlow) return { gridAutoFlow: autoFlow }
+    // see if a specific value has been provided, first come first serve
+    checkOverlapping('grid-auto-flow', autoFlowRow, autoFlowColumn, autoFlowDense)
+    let value: GridAutoFlowProperty | null = null
+    if (autoFlowRow) value = 'row'
+    else if (autoFlowColumn) value = 'column'
+    else if (autoFlowDense) value = 'dense'
+    return value ? { gridAutoFlow: value } : {}
+  }, [autoFlow, autoFlowRow, autoFlowColumn, autoFlowDense])
+
   return (
     <div
       style={{
@@ -245,6 +270,7 @@ function GridContainer({
         ...alignItemsStyle,
         ...justifyContentStyle,
         ...alignContentStyle,
+        ...gridAutoFlowStyle,
         ...style,
       }}
       {...rest}>

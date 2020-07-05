@@ -11,6 +11,7 @@ import type {
   AlignItemsProperty,
   JustifyContentProperty,
   AlignContentProperty,
+  GridAutoFlowProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -146,6 +147,22 @@ type AlignContentCSS =
       alignContent?: AlignContentProperty
     }
 
+type GridAutoFlowCSS =
+  | {
+      // 'grid-auto-flow' short
+      autoFlowRow?: boolean
+      autoFlowColumn?: boolean
+      autoFlowDense?: boolean
+      autoFlow?: never
+    }
+  | {
+      // 'grid-auto-flow' manual
+      autoFlowRow?: never
+      autoFlowColumn?: never
+      autoFlowDense?: never
+      autoFlow?: GridAutoFlowProperty
+    }
+
 export type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -158,6 +175,7 @@ export type GridContainerProps = DivProps &
   JustifyItemsCSS &
   AlignItemsCSS &
   JustifyContentCSS &
-  AlignContentCSS
+  AlignContentCSS &
+  GridAutoFlowCSS
 
 export type GridItemProps = DivProps
