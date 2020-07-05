@@ -91,6 +91,12 @@ function GridContainer({
   // 'grid-auto-flow' manual
   autoFlow,
 
+  // 'grid-auto-rows'
+  autoRows,
+
+  // 'grid-auto-columns'
+  autoColumns,
+
   // required
   style = {},
   children,
@@ -275,6 +281,20 @@ function GridContainer({
     return value ? { gridAutoFlow: value } : {}
   }, [autoFlow, autoFlowRow, autoFlowColumn, autoFlowDense])
 
+  const gridAutoRowsStyle = React.useMemo(
+    (): React.CSSProperties => ({
+      gridAutoRows: autoRows,
+    }),
+    [autoRows],
+  )
+
+  const gridAutoColumnsStyle = React.useMemo(
+    (): React.CSSProperties => ({
+      gridAutoColumns: autoColumns,
+    }),
+    [autoColumns],
+  )
+
   return (
     <div
       style={{
@@ -293,6 +313,8 @@ function GridContainer({
         ...alignContentStyle,
         ...placeContentStyle,
         ...gridAutoFlowStyle,
+        ...gridAutoRowsStyle,
+        ...gridAutoColumnsStyle,
         ...style,
       }}
       {...rest}>
