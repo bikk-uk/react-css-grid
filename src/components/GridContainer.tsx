@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react'
-import { JustifyItemsProperty, AlignItemsProperty } from 'csstype'
+import { JustifyItemsProperty, AlignItemsProperty, JustifyContentProperty } from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
@@ -49,6 +49,17 @@ function GridContainer({
   alignItemsStretch,
   // 'align-items' manual
   alignItems,
+
+  // 'justify-content' short
+  justifyContentStart,
+  justifyContentEnd,
+  justifyContentCenter,
+  justifyContentStretch,
+  justifyContentSpaceAround,
+  justifyContentSpaceBetween,
+  justifyContentSpaceEvenly,
+  // 'justify-content' manual
+  justifyContent,
 
   // required
   style = {},
@@ -138,6 +149,40 @@ function GridContainer({
     return value ? { alignItems: value } : {}
   }, [alignItems, alignItemsStart, alignItemsEnd, alignItemsCenter, alignItemsStretch])
 
+  const justifyContentStyle = React.useMemo((): React.CSSProperties => {
+    // the manual version has been provided, that takes precedence
+    if (justifyContent) return { justifyContent }
+    // see if a specific value has been provided, first come first serve
+    checkOverlapping(
+      'justify-content',
+      justifyContentStart,
+      justifyContentEnd,
+      justifyContentCenter,
+      justifyContentStretch,
+      justifyContentSpaceAround,
+      justifyContentSpaceBetween,
+      justifyContentSpaceEvenly,
+    )
+    let value: JustifyContentProperty | null = null
+    if (justifyContentStart) value = 'start'
+    else if (justifyContentEnd) value = 'end'
+    else if (justifyContentCenter) value = 'center'
+    else if (justifyContentStretch) value = 'stretch'
+    else if (justifyContentSpaceAround) value = 'space-around'
+    else if (justifyContentSpaceBetween) value = 'space-between'
+    else if (justifyContentSpaceEvenly) value = 'space-evenly'
+    return value ? { justifyContent: value } : {}
+  }, [
+    justifyContent,
+    justifyContentStart,
+    justifyContentEnd,
+    justifyContentCenter,
+    justifyContentStretch,
+    justifyContentSpaceAround,
+    justifyContentSpaceBetween,
+    justifyContentSpaceEvenly,
+  ])
+
   return (
     <div
       style={{
@@ -151,6 +196,7 @@ function GridContainer({
         ...gridRowGapStyle,
         ...justifyItemsStyle,
         ...alignItemsStyle,
+        ...justifyContentStyle,
         ...style,
       }}
       {...rest}>
