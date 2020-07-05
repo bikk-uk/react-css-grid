@@ -23,6 +23,7 @@ import type {
   GridRowProperty,
   GridColumnProperty,
   JustifySelfProperty,
+  AlignSelfProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -242,6 +243,24 @@ type JustifySelfCSS =
       justifySelf?: JustifySelfProperty
     }
 
+type AlignSelfCSS =
+  | {
+      // 'align-self' short
+      alignSelfStart?: boolean
+      alignSelfEnd?: boolean
+      alignSelfCenter?: boolean
+      alignSelfStretch?: boolean
+      alignSelf?: never
+    }
+  | {
+      // 'align-self' manual
+      alignSelfStart?: never
+      alignSelfEnd?: never
+      alignSelfCenter?: never
+      alignSelfStretch?: never
+      alignSelf?: AlignSelfProperty
+    }
+
 export type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -268,4 +287,5 @@ export type GridItemProps = DivProps &
   GridRowEndCSS &
   GridRowCSS &
   GridColumnCSS &
-  JustifySelfCSS
+  JustifySelfCSS &
+  AlignSelfCSS
