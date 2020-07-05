@@ -16,6 +16,16 @@ import type {
   PlaceContentProperty,
   GridAutoRowsProperty,
   GridAutoColumnsProperty,
+  GridColumnStartProperty,
+  GridColumnEndProperty,
+  GridRowEndProperty,
+  GridRowStartProperty,
+  GridRowProperty,
+  GridColumnProperty,
+  JustifySelfProperty,
+  AlignSelfProperty,
+  GridAreaProperty,
+  PlaceSelfProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -187,6 +197,82 @@ type GridAutoColumnsCSS = {
   autoColumns?: GridAutoColumnsProperty<string | 0>
 }
 
+type GridColumnStartCSS = {
+  // 'grid-column-start'
+  columnStart?: GridColumnStartProperty
+}
+
+type GridColumnEndCSS = {
+  // 'grid-column-end'
+  columnEnd?: GridColumnEndProperty
+}
+
+type GridRowStartCSS = {
+  // 'grid-row-start'
+  rowStart?: GridRowStartProperty
+}
+
+type GridRowEndCSS = {
+  // 'grid-row-end'
+  rowEnd?: GridRowEndProperty
+}
+
+type GridRowCSS = {
+  // 'grid-row'
+  row?: GridRowProperty
+}
+
+type GridColumnCSS = {
+  // 'grid-column'
+  column?: GridColumnProperty
+}
+
+type GridAreaCSS = {
+  // 'grid-area'
+  area?: GridAreaProperty
+}
+
+type JustifySelfCSS =
+  | {
+      // 'justify-self' short
+      justifySelfStart?: boolean
+      justifySelfEnd?: boolean
+      justifySelfCenter?: boolean
+      justifySelfStretch?: boolean
+      justifySelf?: never
+    }
+  | {
+      // 'justify-self' manual
+      justifySelfStart?: never
+      justifySelfEnd?: never
+      justifySelfCenter?: never
+      justifySelfStretch?: never
+      justifySelf?: JustifySelfProperty
+    }
+
+type AlignSelfCSS =
+  | {
+      // 'align-self' short
+      alignSelfStart?: boolean
+      alignSelfEnd?: boolean
+      alignSelfCenter?: boolean
+      alignSelfStretch?: boolean
+      alignSelf?: never
+    }
+  | {
+      // 'align-self' manual
+      alignSelfStart?: never
+      alignSelfEnd?: never
+      alignSelfCenter?: never
+      alignSelfStretch?: never
+      alignSelf?: AlignSelfProperty
+    }
+
+type PlaceSelfCSS = {
+  // 'place-self'
+  placeSelf?: PlaceSelfProperty
+}
+
 export type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -206,4 +292,14 @@ export type GridContainerProps = DivProps &
   GridAutoRowsCSS &
   GridAutoColumnsCSS
 
-export type GridItemProps = DivProps
+export type GridItemProps = DivProps &
+  GridColumnStartCSS &
+  GridColumnEndCSS &
+  GridRowStartCSS &
+  GridRowEndCSS &
+  GridRowCSS &
+  GridColumnCSS &
+  GridAreaCSS &
+  JustifySelfCSS &
+  AlignSelfCSS &
+  PlaceSelfCSS

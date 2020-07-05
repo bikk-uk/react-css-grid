@@ -257,6 +257,139 @@ To modify `place-content`:
 </Grid>
 ```
 
+### Grid Items
+
+To help with structuring your components, a Grid Item is also available.
+
+```tsx
+<Grid rows='6em' columns='4em 2em'>
+  <Grid.Item justifySelfStart>
+    <MyFirstComponent />
+  </Grid.Item>
+  <Grid.Item justifySelfEnd>
+    <MySecondComponent />
+  </Grid.Item>
+</Grid>
+```
+
+#### Grid Column Start | Grid Column End
+
+To modify `grid-column-start` or `grid-column-end`:
+
+```tsx
+<Grid>
+  <Grid.Item columnStart={2} columnEnd={5}>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+#### Grid Column (Shorthand)
+
+To modify `grid-column`:
+
+```tsx
+<Grid>
+  <Grid.Item column='2 / 5'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+#### Grid Row Start | Grid Row End
+
+To modify `grid-row-start` or `grid-row-end`:
+
+```tsx
+<Grid>
+  <Grid.Item rowStart='span' rowEnd='row1-end'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+#### Grid Row (Shorthand)
+
+To modify `grid-row`:
+
+```tsx
+<Grid>
+  <Grid.Item row='3 / 6'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+#### Grid Area (Shorthand)
+
+To modify `grid-area`:
+
+```tsx
+<Grid>
+  <Grid.Item area='header'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+#### Justify Self
+
+To modify `justify-self`:
+
+```tsx
+<Grid>
+  <Grid.Item justifySelf='center'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+To simplify, you can use:
+
+```tsx
+<Grid.Item justifySelfStart></Grid.Item> // justify-self: start;
+<Grid.Item justifySelfEnd></Grid.Item> // justify-self: end;
+<Grid.Item justifySelfCenter></Grid.Item> // justify-self: center;
+<Grid.Item justifySelfStretch></Grid.Item> // justify-self: stretch;
+```
+
+_These are first come first served, in this order. They cannot be used if you have already provided the `justifySelf` prop. Providing multiple will result in a console warning._
+
+#### Align Self
+
+To modify `align-self`:
+
+```tsx
+<Grid>
+  <Grid.Item alignSelf='end'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
+To simplify, you can use:
+
+```tsx
+<Grid.Item alignSelfStart></Grid.Item> // align-self: start;
+<Grid.Item alignSelfEnd></Grid.Item> // align-self: end;
+<Grid.Item alignSelfCenter></Grid.Item> // align-self: center;
+<Grid.Item alignSelfStretch></Grid.Item> // align-self: stretch;
+```
+
+_These are first come first served, in this order. They cannot be used if you have already provided the `alignSelf` prop. Providing multiple will result in a console warning._
+
+#### Place Self (Shorthand)
+
+To modify `place-self`:
+
+```tsx
+<Grid>
+  <Grid.Item placeSelf='center'>
+    <MyComponent />
+  </Grid.Item>
+</Grid>
+```
+
 ## Notes
 
 ### Exposed Props
@@ -264,11 +397,11 @@ To modify `place-content`:
 All the React `div` props and TypeScript definitions are exposed/passed through. This allows for an identical development experience whilst being able to ignore any Grid related CSS.
 
 ```tsx
-<Grid column onMouseEnter={onMouseEnter}>
-  <Grid.Item rows='50px auto 25px' columns='10px 20px 30px'>
+<Grid rows='50px auto' columns='4em auto 10em' onMouseEnter={onMouseEnter}>
+  <Grid.Item alignSelfCenter>
     <MyComponent />
   </Grid.Item>
-  <Grid.Item inline onClick={handleItemClick}>
+  <Grid.Item placeSelf='end' onClick={handleItemClick}>
     <MyComponent />
   </Grid.Item>
 </Grid>
