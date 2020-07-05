@@ -56,6 +56,9 @@ function GridContainer({
   // 'align-items' manual
   alignItems,
 
+  // 'place-items'
+  placeItems,
+
   // 'justify-content' short
   justifyContentStart,
   justifyContentEnd,
@@ -77,6 +80,9 @@ function GridContainer({
   alignContentSpaceEvenly,
   // 'align-content' manual
   alignContent,
+
+  // 'place-content'
+  placeContent,
 
   // 'grid-auto-flow' short
   autoFlowRow,
@@ -175,6 +181,13 @@ function GridContainer({
     return value ? { alignItems: value } : {}
   }, [alignItems, alignItemsStart, alignItemsEnd, alignItemsCenter, alignItemsStretch])
 
+  const placeItemsStyle = React.useMemo(
+    (): React.CSSProperties => ({
+      placeItems,
+    }),
+    [placeItems],
+  )
+
   const justifyContentStyle = React.useMemo((): React.CSSProperties => {
     // the manual version has been provided, that takes precedence
     if (justifyContent) return { justifyContent }
@@ -243,6 +256,13 @@ function GridContainer({
     alignContentSpaceEvenly,
   ])
 
+  const placeContentStyle = React.useMemo(
+    (): React.CSSProperties => ({
+      placeContent,
+    }),
+    [placeContent],
+  )
+
   const gridAutoFlowStyle = React.useMemo((): React.CSSProperties => {
     // the manual version has been provided, that takes precedence
     if (autoFlow) return { gridAutoFlow: autoFlow }
@@ -268,8 +288,10 @@ function GridContainer({
         ...gridRowGapStyle,
         ...justifyItemsStyle,
         ...alignItemsStyle,
+        ...placeItemsStyle,
         ...justifyContentStyle,
         ...alignContentStyle,
+        ...placeContentStyle,
         ...gridAutoFlowStyle,
         ...style,
       }}
