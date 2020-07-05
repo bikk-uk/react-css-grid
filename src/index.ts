@@ -16,6 +16,10 @@ import type {
   PlaceContentProperty,
   GridAutoRowsProperty,
   GridAutoColumnsProperty,
+  GridColumnStartProperty,
+  GridColumnEndProperty,
+  GridRowEndProperty,
+  GridRowStartProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -187,6 +191,26 @@ type GridAutoColumnsCSS = {
   autoColumns?: GridAutoColumnsProperty<string | 0>
 }
 
+type GridColumnStart = {
+  // 'grid-column-start'
+  columnStart?: GridColumnStartProperty
+}
+
+type GridColumnEnd = {
+  // 'grid-column-end'
+  columnEnd?: GridColumnEndProperty
+}
+
+type GridRowStart = {
+  // 'grid-row-start'
+  rowStart?: GridRowStartProperty
+}
+
+type GridRowEnd = {
+  // 'grid-row-end'
+  rowEnd?: GridRowEndProperty
+}
+
 export type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -206,4 +230,4 @@ export type GridContainerProps = DivProps &
   GridAutoRowsCSS &
   GridAutoColumnsCSS
 
-export type GridItemProps = DivProps
+export type GridItemProps = DivProps & GridColumnStart & GridColumnEnd & GridRowStart & GridRowEnd
