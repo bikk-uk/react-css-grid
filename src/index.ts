@@ -10,6 +10,7 @@ import type {
   JustifyItemsProperty,
   AlignItemsProperty,
   JustifyContentProperty,
+  AlignContentProperty,
 } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
@@ -121,6 +122,30 @@ type JustifyContentCSS =
       justifyContent?: JustifyContentProperty
     }
 
+type AlignContentCSS =
+  | {
+      // 'align-content' short
+      alignContentStart?: boolean
+      alignContentEnd?: boolean
+      alignContentCenter?: boolean
+      alignContentStretch?: boolean
+      alignContentSpaceAround?: boolean
+      alignContentSpaceBetween?: boolean
+      alignContentSpaceEvenly?: boolean
+      alignContent?: never
+    }
+  | {
+      // 'align-content' manual
+      alignContentStart?: never
+      alignContentEnd?: never
+      alignContentCenter?: never
+      alignContentStretch?: never
+      alignContentSpaceAround?: never
+      alignContentSpaceBetween?: never
+      alignContentSpaceEvenly?: never
+      alignContent?: AlignContentProperty
+    }
+
 export type GridContainerProps = DivProps &
   DisplayCSS &
   GridTemplateColumnsCSS &
@@ -132,6 +157,7 @@ export type GridContainerProps = DivProps &
   GridRowGapCSS &
   JustifyItemsCSS &
   AlignItemsCSS &
-  JustifyContentCSS
+  JustifyContentCSS &
+  AlignContentCSS
 
 export type GridItemProps = DivProps

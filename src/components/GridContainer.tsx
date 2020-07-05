@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react'
-import { JustifyItemsProperty, AlignItemsProperty, JustifyContentProperty } from 'csstype'
+import { JustifyItemsProperty, AlignItemsProperty, JustifyContentProperty, AlignContentProperty } from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
@@ -60,6 +60,17 @@ function GridContainer({
   justifyContentSpaceEvenly,
   // 'justify-content' manual
   justifyContent,
+
+  // 'align-content' short
+  alignContentStart,
+  alignContentEnd,
+  alignContentCenter,
+  alignContentStretch,
+  alignContentSpaceAround,
+  alignContentSpaceBetween,
+  alignContentSpaceEvenly,
+  // 'align-content' manual
+  alignContent,
 
   // required
   style = {},
@@ -183,6 +194,40 @@ function GridContainer({
     justifyContentSpaceEvenly,
   ])
 
+  const alignContentStyle = React.useMemo((): React.CSSProperties => {
+    // the manual version has been provided, that takes precedence
+    if (alignContent) return { alignContent }
+    // see if a specific value has been provided, first come first serve
+    checkOverlapping(
+      'align-content',
+      alignContentStart,
+      alignContentEnd,
+      alignContentCenter,
+      alignContentStretch,
+      alignContentSpaceAround,
+      alignContentSpaceBetween,
+      alignContentSpaceEvenly,
+    )
+    let value: AlignContentProperty | null = null
+    if (alignContentStart) value = 'start'
+    else if (alignContentEnd) value = 'end'
+    else if (alignContentCenter) value = 'center'
+    else if (alignContentStretch) value = 'stretch'
+    else if (alignContentSpaceAround) value = 'space-around'
+    else if (alignContentSpaceBetween) value = 'space-between'
+    else if (alignContentSpaceEvenly) value = 'space-evenly'
+    return value ? { alignContent: value } : {}
+  }, [
+    alignContent,
+    alignContentStart,
+    alignContentEnd,
+    alignContentCenter,
+    alignContentStretch,
+    alignContentSpaceAround,
+    alignContentSpaceBetween,
+    alignContentSpaceEvenly,
+  ])
+
   return (
     <div
       style={{
@@ -197,6 +242,7 @@ function GridContainer({
         ...justifyItemsStyle,
         ...alignItemsStyle,
         ...justifyContentStyle,
+        ...alignContentStyle,
         ...style,
       }}
       {...rest}>
