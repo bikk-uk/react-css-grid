@@ -123,6 +123,7 @@ function GridContainer({
   const gridColumnGapStyle = React.useMemo(
     (): React.CSSProperties => ({
       columnGap,
+      gridColumnGap: columnGap,
     }),
     [columnGap],
   )
@@ -130,6 +131,7 @@ function GridContainer({
   const gridRowGapStyle = React.useMemo(
     (): React.CSSProperties => ({
       rowGap,
+      gridRowGap: rowGap,
     }),
     [rowGap],
   )
