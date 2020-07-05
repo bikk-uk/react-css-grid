@@ -4,6 +4,10 @@ import React from 'react'
 // Types
 import type { GridItemProps } from '../index'
 
+// Helpers
+import { checkOverlapping } from '../helpers/overlapping'
+import { JustifySelfProperty } from 'csstype'
+
 function GridItem({
   // 'grid-column-start'
   columnStart,
@@ -18,6 +22,14 @@ function GridItem({
   rowEnd,
   // 'grid-row'
   row,
+
+  // 'justify-self' short
+  justifySelfStart,
+  justifySelfEnd,
+  justifySelfCenter,
+  justifySelfStretch,
+  // 'justify-self' manual
+  justifySelf,
 
   // required
   style = {},
@@ -66,6 +78,19 @@ function GridItem({
     [row],
   )
 
+  const justifySelfStyle = React.useMemo((): React.CSSProperties => {
+    // the manual version has been provided, that takes precedence
+    if (justifySelf) return { justifySelf }
+    // see if a specific value has been provided, first come first serve
+    checkOverlapping('justify-self', justifySelfStart, justifySelfEnd, justifySelfCenter, justifySelfStretch)
+    let value: JustifySelfProperty | null = null
+    if (justifySelfStart) value = 'start'
+    else if (justifySelfEnd) value = 'end'
+    else if (justifySelfCenter) value = 'center'
+    else if (justifySelfStretch) value = 'stretch'
+    return value ? { justifySelf: value } : {}
+  }, [justifySelf, justifySelfStart, justifySelfEnd, justifySelfCenter, justifySelfStretch])
+
   return (
     <div
       style={{
@@ -75,6 +100,7 @@ function GridItem({
         ...gridRowStartStyle,
         ...gridRowEndStyle,
         ...gridRowStyle,
+        ...justifySelfStyle,
         ...style,
       }}
       {...rest}>
