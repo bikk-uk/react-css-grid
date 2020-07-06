@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const overlapping_1 = require("../helpers/overlapping");
+const trim_1 = require("../helpers/trim");
 function GridItem({ columnStart, columnEnd, column, rowStart, rowEnd, row, area, justifySelfStart, justifySelfEnd, justifySelfCenter, justifySelfStretch, justifySelf, alignSelfStart, alignSelfEnd, alignSelfCenter, alignSelfStretch, alignSelf, placeSelf, style = {}, children, ...rest }) {
     const gridColumnStartStyle = react_1.default.useMemo(() => ({
         gridColumnStart: columnStart,
@@ -60,7 +61,7 @@ function GridItem({ columnStart, columnEnd, column, rowStart, rowEnd, row, area,
     const placeSelfStyle = react_1.default.useMemo(() => ({
         placeSelf,
     }), [placeSelf]);
-    const combinedStyle = {
+    const combinedStyle = trim_1.trimUndefined({
         ...gridColumnStartStyle,
         ...gridColumnEndStyle,
         ...gridColumnStyle,
@@ -72,8 +73,7 @@ function GridItem({ columnStart, columnEnd, column, rowStart, rowEnd, row, area,
         ...alignSelfStyle,
         ...placeSelfStyle,
         ...style,
-    };
-    Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key]);
+    });
     return (react_1.default.createElement("div", Object.assign({ style: combinedStyle }, rest), children));
 }
 exports.default = GridItem;

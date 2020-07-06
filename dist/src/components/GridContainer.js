@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const overlapping_1 = require("../helpers/overlapping");
+const trim_1 = require("../helpers/trim");
 function GridContainer({ inline, columns, rows, areas, template, gap, gridGap, columnGap, rowGap, justifyItemsStart, justifyItemsEnd, justifyItemsCenter, justifyItemsStretch, justifyItems, alignItemsStart, alignItemsEnd, alignItemsCenter, alignItemsStretch, alignItems, placeItems, justifyContentStart, justifyContentEnd, justifyContentCenter, justifyContentStretch, justifyContentSpaceAround, justifyContentSpaceBetween, justifyContentSpaceEvenly, justifyContent, alignContentStart, alignContentEnd, alignContentCenter, alignContentStretch, alignContentSpaceAround, alignContentSpaceBetween, alignContentSpaceEvenly, alignContent, placeContent, autoFlowRow, autoFlowColumn, autoFlowDense, autoFlow, autoRows, autoColumns, style = {}, children, ...rest }) {
     const displayStyle = react_1.default.useMemo(() => ({
         display: inline ? 'inline-grid' : 'grid',
@@ -148,7 +149,7 @@ function GridContainer({ inline, columns, rows, areas, template, gap, gridGap, c
     const gridAutoColumnsStyle = react_1.default.useMemo(() => ({
         gridAutoColumns: autoColumns,
     }), [autoColumns]);
-    const combinedStyle = {
+    const combinedStyle = trim_1.trimUndefined({
         ...displayStyle,
         ...gridTemplateColumnsStyle,
         ...gridTemplateRowsStyle,
@@ -167,8 +168,7 @@ function GridContainer({ inline, columns, rows, areas, template, gap, gridGap, c
         ...gridAutoRowsStyle,
         ...gridAutoColumnsStyle,
         ...style,
-    };
-    Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key]);
+    });
     return (react_1.default.createElement("div", Object.assign({ style: combinedStyle }, rest), children));
 }
 exports.default = GridContainer;
