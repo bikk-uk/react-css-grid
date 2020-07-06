@@ -20,7 +20,18 @@
     "type": "git",
     "url": "https://github.com/bikk-uk/react-css-grid.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "reactjs",
+    "css",
+    "layout",
+    "grid",
+    "column",
+    "row",
+    "styles",
+    "simpler",
+    "expressive"
+  ],
   "author": "bikk-uk",
   "license": "MIT",
   "bugs": {
