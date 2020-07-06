@@ -148,25 +148,27 @@ function GridContainer({ inline, columns, rows, areas, template, gap, gridGap, c
     const gridAutoColumnsStyle = react_1.default.useMemo(() => ({
         gridAutoColumns: autoColumns,
     }), [autoColumns]);
-    return (react_1.default.createElement("div", Object.assign({ style: {
-            ...displayStyle,
-            ...gridTemplateColumnsStyle,
-            ...gridTemplateRowsStyle,
-            ...gridTemplateAreasStyle,
-            ...gridTemplateStyle,
-            ...gridGapStyle,
-            ...gridColumnGapStyle,
-            ...gridRowGapStyle,
-            ...justifyItemsStyle,
-            ...alignItemsStyle,
-            ...placeItemsStyle,
-            ...justifyContentStyle,
-            ...alignContentStyle,
-            ...placeContentStyle,
-            ...gridAutoFlowStyle,
-            ...gridAutoRowsStyle,
-            ...gridAutoColumnsStyle,
-            ...style,
-        } }, rest), children));
+    const combinedStyle = {
+        ...displayStyle,
+        ...gridTemplateColumnsStyle,
+        ...gridTemplateRowsStyle,
+        ...gridTemplateAreasStyle,
+        ...gridTemplateStyle,
+        ...gridGapStyle,
+        ...gridColumnGapStyle,
+        ...gridRowGapStyle,
+        ...justifyItemsStyle,
+        ...alignItemsStyle,
+        ...placeItemsStyle,
+        ...justifyContentStyle,
+        ...alignContentStyle,
+        ...placeContentStyle,
+        ...gridAutoFlowStyle,
+        ...gridAutoRowsStyle,
+        ...gridAutoColumnsStyle,
+        ...style,
+    };
+    Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key]);
+    return (react_1.default.createElement("div", Object.assign({ style: combinedStyle }, rest), children));
 }
 exports.default = GridContainer;

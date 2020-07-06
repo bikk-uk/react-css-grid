@@ -1,6 +1,6 @@
 {
   "name": "@react-css/grid",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A thin wrapper to help make CSS Grid simpler and more expressive",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -20,7 +20,18 @@
     "type": "git",
     "url": "https://github.com/bikk-uk/react-css-grid.git"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "reactjs",
+    "css",
+    "layout",
+    "grid",
+    "column",
+    "row",
+    "styles",
+    "simpler",
+    "expressive"
+  ],
   "author": "bikk-uk",
   "license": "MIT",
   "bugs": {
@@ -34,12 +45,12 @@
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
-    "@testing-library/react": "^10.2.1",
+    "@testing-library/react": "^10.4.4",
     "@types/jest": "^26.0.3",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
     "babel-loader": "^8.1.0",
     "coveralls": "^3.1.0",
     "css-loader": "^3.5.3",
