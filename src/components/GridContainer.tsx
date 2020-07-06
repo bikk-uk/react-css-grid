@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react'
-import {
+import type {
   JustifyItemsProperty,
   AlignItemsProperty,
   JustifyContentProperty,
@@ -12,7 +12,7 @@ import {
 import { checkOverlapping } from '../helpers/overlapping'
 
 // Types
-import type { GridContainerProps } from '../index'
+import type { GridContainerProps, IndexableCSS } from '../index'
 
 function GridContainer({
   // 'display'
@@ -295,29 +295,32 @@ function GridContainer({
     [autoColumns],
   )
 
+  const combinedStyle: IndexableCSS = {
+    ...displayStyle,
+    ...gridTemplateColumnsStyle,
+    ...gridTemplateRowsStyle,
+    ...gridTemplateAreasStyle,
+    ...gridTemplateStyle,
+    ...gridGapStyle,
+    ...gridColumnGapStyle,
+    ...gridRowGapStyle,
+    ...justifyItemsStyle,
+    ...alignItemsStyle,
+    ...placeItemsStyle,
+    ...justifyContentStyle,
+    ...alignContentStyle,
+    ...placeContentStyle,
+    ...gridAutoFlowStyle,
+    ...gridAutoRowsStyle,
+    ...gridAutoColumnsStyle,
+    ...style,
+  }
+
+  // remove all CSS Properties that are undefined
+  Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key])
+
   return (
-    <div
-      style={{
-        ...displayStyle,
-        ...gridTemplateColumnsStyle,
-        ...gridTemplateRowsStyle,
-        ...gridTemplateAreasStyle,
-        ...gridTemplateStyle,
-        ...gridGapStyle,
-        ...gridColumnGapStyle,
-        ...gridRowGapStyle,
-        ...justifyItemsStyle,
-        ...alignItemsStyle,
-        ...placeItemsStyle,
-        ...justifyContentStyle,
-        ...alignContentStyle,
-        ...placeContentStyle,
-        ...gridAutoFlowStyle,
-        ...gridAutoRowsStyle,
-        ...gridAutoColumnsStyle,
-        ...style,
-      }}
-      {...rest}>
+    <div style={combinedStyle} {...rest}>
       {children}
     </div>
   )
