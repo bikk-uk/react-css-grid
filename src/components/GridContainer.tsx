@@ -10,9 +10,10 @@ import type {
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
+import { trimUndefined } from '../helpers/trim'
 
 // Types
-import type { GridContainerProps, IndexableCSS } from '../index'
+import type { GridContainerProps } from '../index'
 
 function GridContainer({
   // 'display'
@@ -295,7 +296,7 @@ function GridContainer({
     [autoColumns],
   )
 
-  const combinedStyle: IndexableCSS = {
+  const combinedStyle = trimUndefined({
     ...displayStyle,
     ...gridTemplateColumnsStyle,
     ...gridTemplateRowsStyle,
@@ -314,10 +315,7 @@ function GridContainer({
     ...gridAutoRowsStyle,
     ...gridAutoColumnsStyle,
     ...style,
-  }
-
-  // remove all CSS Properties that are undefined
-  Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key])
+  })
 
   return (
     <div style={combinedStyle} {...rest}>

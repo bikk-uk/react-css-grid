@@ -4,9 +4,10 @@ import type { JustifySelfProperty, AlignSelfProperty } from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
+import { trimUndefined } from '../helpers/trim'
 
 // Types
-import type { GridItemProps, IndexableCSS } from '../index'
+import type { GridItemProps } from '../index'
 
 function GridItem({
   // 'grid-column-start'
@@ -132,7 +133,7 @@ function GridItem({
     [placeSelf],
   )
 
-  const combinedStyle: IndexableCSS = {
+  const combinedStyle = trimUndefined({
     ...gridColumnStartStyle,
     ...gridColumnEndStyle,
     ...gridColumnStyle,
@@ -144,10 +145,7 @@ function GridItem({
     ...alignSelfStyle,
     ...placeSelfStyle,
     ...style,
-  }
-
-  // remove all CSS Properties that are undefined
-  Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key])
+  })
 
   return (
     <div style={combinedStyle} {...rest}>
