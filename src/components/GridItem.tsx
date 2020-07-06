@@ -7,7 +7,7 @@ import { checkOverlapping } from '../helpers/overlapping'
 import { trimUndefined } from '../helpers/trim'
 
 // Types
-import type { GridItemProps, IndexableCSS } from '../index'
+import type { GridItemProps } from '../index'
 
 function GridItem({
   // 'grid-column-start'
@@ -133,7 +133,7 @@ function GridItem({
     [placeSelf],
   )
 
-  const combinedStyle: IndexableCSS = trimUndefined({
+  const combinedStyle = trimUndefined({
     ...gridColumnStartStyle,
     ...gridColumnEndStyle,
     ...gridColumnStyle,

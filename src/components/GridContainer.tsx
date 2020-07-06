@@ -13,7 +13,7 @@ import { checkOverlapping } from '../helpers/overlapping'
 import { trimUndefined } from '../helpers/trim'
 
 // Types
-import type { GridContainerProps, IndexableCSS } from '../index'
+import type { GridContainerProps } from '../index'
 
 function GridContainer({
   // 'display'
@@ -296,7 +296,7 @@ function GridContainer({
     [autoColumns],
   )
 
-  const combinedStyle: IndexableCSS = trimUndefined({
+  const combinedStyle = trimUndefined({
     ...displayStyle,
     ...gridTemplateColumnsStyle,
     ...gridTemplateRowsStyle,
