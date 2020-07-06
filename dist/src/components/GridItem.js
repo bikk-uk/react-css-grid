@@ -60,18 +60,20 @@ function GridItem({ columnStart, columnEnd, column, rowStart, rowEnd, row, area,
     const placeSelfStyle = react_1.default.useMemo(() => ({
         placeSelf,
     }), [placeSelf]);
-    return (react_1.default.createElement("div", Object.assign({ style: {
-            ...gridColumnStartStyle,
-            ...gridColumnEndStyle,
-            ...gridColumnStyle,
-            ...gridRowStartStyle,
-            ...gridRowEndStyle,
-            ...gridRowStyle,
-            ...gridAreaStyle,
-            ...justifySelfStyle,
-            ...alignSelfStyle,
-            ...placeSelfStyle,
-            ...style,
-        } }, rest), children));
+    const combinedStyle = {
+        ...gridColumnStartStyle,
+        ...gridColumnEndStyle,
+        ...gridColumnStyle,
+        ...gridRowStartStyle,
+        ...gridRowEndStyle,
+        ...gridRowStyle,
+        ...gridAreaStyle,
+        ...justifySelfStyle,
+        ...alignSelfStyle,
+        ...placeSelfStyle,
+        ...style,
+    };
+    Object.keys(combinedStyle).forEach((key) => combinedStyle[key] === undefined && delete combinedStyle[key]);
+    return (react_1.default.createElement("div", Object.assign({ style: combinedStyle }, rest), children));
 }
 exports.default = GridItem;
