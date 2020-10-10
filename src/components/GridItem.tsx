@@ -1,6 +1,6 @@
 // Libraries
 import React from 'react'
-import type { JustifySelfProperty, AlignSelfProperty } from 'csstype'
+import type { Property } from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
@@ -105,7 +105,7 @@ function GridItem({
     if (justifySelf) return { justifySelf }
     // see if a specific value has been provided, first come first serve
     checkOverlapping('justify-self', justifySelfStart, justifySelfEnd, justifySelfCenter, justifySelfStretch)
-    let value: JustifySelfProperty | null = null
+    let value: Property.JustifySelf | null = null
     if (justifySelfStart) value = 'start'
     else if (justifySelfEnd) value = 'end'
     else if (justifySelfCenter) value = 'center'
@@ -118,7 +118,7 @@ function GridItem({
     if (alignSelf) return { alignSelf }
     // see if a specific value has been provided, first come first serve
     checkOverlapping('align-self', alignSelfStart, alignSelfEnd, alignSelfCenter, alignSelfStretch)
-    let value: AlignSelfProperty | null = null
+    let value: Property.AlignSelf | null = null
     if (alignSelfStart) value = 'start'
     else if (alignSelfEnd) value = 'end'
     else if (alignSelfCenter) value = 'center'

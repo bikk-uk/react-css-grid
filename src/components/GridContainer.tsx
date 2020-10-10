@@ -1,12 +1,6 @@
 // Libraries
 import React from 'react'
-import type {
-  JustifyItemsProperty,
-  AlignItemsProperty,
-  JustifyContentProperty,
-  AlignContentProperty,
-  GridAutoFlowProperty,
-} from 'csstype'
+import type { Property } from 'csstype'
 
 // Helpers
 import { checkOverlapping } from '../helpers/overlapping'
@@ -167,7 +161,7 @@ function GridContainer({
     if (justifyItems) return { justifyItems }
     // see if a specific value has been provided, first come first serve
     checkOverlapping('justify-items', justifyItemsStart, justifyItemsEnd, justifyItemsCenter, justifyItemsStretch)
-    let value: JustifyItemsProperty | null = null
+    let value: Property.JustifyItems | null = null
     if (justifyItemsStart) value = 'start'
     else if (justifyItemsEnd) value = 'end'
     else if (justifyItemsCenter) value = 'center'
@@ -180,7 +174,7 @@ function GridContainer({
     if (alignItems) return { alignItems }
     // see if a specific value has been provided, first come first serve
     checkOverlapping('align-items', alignItemsStart, alignItemsEnd, alignItemsCenter, alignItemsStretch)
-    let value: AlignItemsProperty | null = null
+    let value: Property.AlignItems | null = null
     if (alignItemsStart) value = 'start'
     else if (alignItemsEnd) value = 'end'
     else if (alignItemsCenter) value = 'center'
@@ -209,7 +203,7 @@ function GridContainer({
       justifyContentSpaceBetween,
       justifyContentSpaceEvenly,
     )
-    let value: JustifyContentProperty | null = null
+    let value: Property.JustifyContent | null = null
     if (justifyContentStart) value = 'start'
     else if (justifyContentEnd) value = 'end'
     else if (justifyContentCenter) value = 'center'
@@ -243,7 +237,7 @@ function GridContainer({
       alignContentSpaceBetween,
       alignContentSpaceEvenly,
     )
-    let value: AlignContentProperty | null = null
+    let value: Property.AlignContent | null = null
     if (alignContentStart) value = 'start'
     else if (alignContentEnd) value = 'end'
     else if (alignContentCenter) value = 'center'
@@ -275,7 +269,7 @@ function GridContainer({
     if (autoFlow) return { gridAutoFlow: autoFlow }
     // see if a specific value has been provided, first come first serve
     checkOverlapping('grid-auto-flow', autoFlowRow, autoFlowColumn, autoFlowDense)
-    let value: GridAutoFlowProperty | null = null
+    let value: Property.GridAutoFlow | null = null
     if (autoFlowRow) value = 'row'
     else if (autoFlowColumn) value = 'column'
     else if (autoFlowDense) value = 'dense'
