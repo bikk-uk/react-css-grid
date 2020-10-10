@@ -1,32 +1,5 @@
 // Libraries
-import type {
-  GridTemplateColumnsProperty,
-  GridTemplateRowsProperty,
-  GridTemplateAreasProperty,
-  GridTemplateProperty,
-  GridGapProperty,
-  GridColumnGapProperty,
-  GridRowGapProperty,
-  JustifyItemsProperty,
-  AlignItemsProperty,
-  JustifyContentProperty,
-  AlignContentProperty,
-  GridAutoFlowProperty,
-  PlaceItemsProperty,
-  PlaceContentProperty,
-  GridAutoRowsProperty,
-  GridAutoColumnsProperty,
-  GridColumnStartProperty,
-  GridColumnEndProperty,
-  GridRowEndProperty,
-  GridRowStartProperty,
-  GridRowProperty,
-  GridColumnProperty,
-  JustifySelfProperty,
-  AlignSelfProperty,
-  GridAreaProperty,
-  PlaceSelfProperty,
-} from 'csstype'
+import type { Property } from 'csstype'
 
 type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
 
@@ -41,44 +14,44 @@ type DisplayCSS = {
 
 type GridTemplateColumnsCSS = {
   // 'grid-template-columns'
-  columns?: GridTemplateColumnsProperty<string | 0>
+  columns?: Property.GridTemplateColumns
 }
 
 type GridTemplateRowsCSS = {
   // 'grid-template-rows'
-  rows?: GridTemplateRowsProperty<string | 0>
+  rows?: Property.GridTemplateRows
 }
 
 type GridTemplateAreasCSS = {
   // 'grid-template-areas'
-  areas?: GridTemplateAreasProperty
+  areas?: Property.GridTemplateAreas
 }
 
 type GridTemplateCSS = {
   // 'grid-template'
-  template?: GridTemplateProperty
+  template?: Property.GridTemplate
 }
 
 type GridGapCSS =
   | {
       // 'grid-gap' or 'gap'
-      gap?: GridGapProperty<string | 0>
+      gap?: Property.Gap
       gridGap?: never
     }
   | {
       // 'grid-gap' or 'gap'
       gap?: never
-      gridGap?: GridGapProperty<string | 0>
+      gridGap?: Property.Gap
     }
 
 type GridColumnGapCSS = {
   // 'column-gap'
-  columnGap?: GridColumnGapProperty<string | 0>
+  columnGap?: Property.ColumnGap
 }
 
 type GridRowGapCSS = {
   // 'row-gap'
-  rowGap?: GridRowGapProperty<string | 0>
+  rowGap?: Property.RowGap
 }
 
 type JustifyItemsCSS =
@@ -96,7 +69,7 @@ type JustifyItemsCSS =
       justifyItemsEnd?: never
       justifyItemsCenter?: never
       justifyItemsStretch?: never
-      justifyItems?: JustifyItemsProperty
+      justifyItems?: Property.JustifyItems
     }
 
 type AlignItemsCSS =
@@ -114,12 +87,12 @@ type AlignItemsCSS =
       alignItemsEnd?: never
       alignItemsCenter?: never
       alignItemsStretch?: never
-      alignItems?: AlignItemsProperty
+      alignItems?: Property.AlignItems
     }
 
 type PlaceItemsCSS = {
   // 'place-items'
-  placeItems?: PlaceItemsProperty
+  placeItems?: Property.PlaceItems
 }
 
 type JustifyContentCSS =
@@ -143,7 +116,7 @@ type JustifyContentCSS =
       justifyContentSpaceAround?: never
       justifyContentSpaceBetween?: never
       justifyContentSpaceEvenly?: never
-      justifyContent?: JustifyContentProperty
+      justifyContent?: Property.JustifyContent
     }
 
 type AlignContentCSS =
@@ -167,12 +140,12 @@ type AlignContentCSS =
       alignContentSpaceAround?: never
       alignContentSpaceBetween?: never
       alignContentSpaceEvenly?: never
-      alignContent?: AlignContentProperty
+      alignContent?: Property.AlignContent
     }
 
 type PlaceContentCSS = {
   // 'place-content'
-  placeContent?: PlaceContentProperty
+  placeContent?: Property.PlaceContent
 }
 
 type GridAutoFlowCSS =
@@ -188,52 +161,52 @@ type GridAutoFlowCSS =
       autoFlowRow?: never
       autoFlowColumn?: never
       autoFlowDense?: never
-      autoFlow?: GridAutoFlowProperty
+      autoFlow?: Property.GridAutoFlow
     }
 
 type GridAutoRowsCSS = {
   // 'grid-auto-rows'
-  autoRows?: GridAutoRowsProperty<string | 0>
+  autoRows?: Property.GridAutoRows
 }
 
 type GridAutoColumnsCSS = {
   // 'grid-auto-columns'
-  autoColumns?: GridAutoColumnsProperty<string | 0>
+  autoColumns?: Property.GridAutoColumns
 }
 
 type GridColumnStartCSS = {
   // 'grid-column-start'
-  columnStart?: GridColumnStartProperty
+  columnStart?: Property.GridColumnStart
 }
 
 type GridColumnEndCSS = {
   // 'grid-column-end'
-  columnEnd?: GridColumnEndProperty
+  columnEnd?: Property.GridColumnEnd
 }
 
 type GridRowStartCSS = {
   // 'grid-row-start'
-  rowStart?: GridRowStartProperty
+  rowStart?: Property.GridRowStart
 }
 
 type GridRowEndCSS = {
   // 'grid-row-end'
-  rowEnd?: GridRowEndProperty
+  rowEnd?: Property.GridRowEnd
 }
 
 type GridRowCSS = {
   // 'grid-row'
-  row?: GridRowProperty
+  row?: Property.GridRow
 }
 
 type GridColumnCSS = {
   // 'grid-column'
-  column?: GridColumnProperty
+  column?: Property.GridColumn
 }
 
 type GridAreaCSS = {
   // 'grid-area'
-  area?: GridAreaProperty
+  area?: Property.GridArea
 }
 
 type JustifySelfCSS =
@@ -251,7 +224,7 @@ type JustifySelfCSS =
       justifySelfEnd?: never
       justifySelfCenter?: never
       justifySelfStretch?: never
-      justifySelf?: JustifySelfProperty
+      justifySelf?: Property.JustifySelf
     }
 
 type AlignSelfCSS =
@@ -269,12 +242,12 @@ type AlignSelfCSS =
       alignSelfEnd?: never
       alignSelfCenter?: never
       alignSelfStretch?: never
-      alignSelf?: AlignSelfProperty
+      alignSelf?: Property.AlignSelf
     }
 
 type PlaceSelfCSS = {
   // 'place-self'
-  placeSelf?: PlaceSelfProperty
+  placeSelf?: Property.PlaceSelf
 }
 
 export type GridContainerProps = DivProps &
