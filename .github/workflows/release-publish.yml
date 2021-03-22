@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: 14
           check-latest: true
-          scope: '@react-css'
+          scope: '@bikk-uk'
           registry-url: https://npm.pkg.github.com
       - run: yarn
       - run: npm publish --access public
