@@ -2,7 +2,7 @@
 
 A thin wrapper to help make CSS Grid simpler and more expressive
 
-[![Build Status](https://travis-ci.org/bikk-uk/react-css-grid.svg?branch=master)](https://travis-ci.org/bikk-uk/react-css-grid)
+[![Build and Test](https://github.com/bikk-uk/react-css-grid/actions/workflows/build-test.yml/badge.svg?branch=master)](https://github.com/bikk-uk/react-css-grid/actions/workflows/build-test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/bikk-uk/react-css-grid/badge.svg?branch=master)](https://coveralls.io/github/bikk-uk/react-css-grid?branch=master)
 [![react-css-test](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/simple/hksco8/main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/hksco8/runs)
 [![Known Vulnerabilities](https://snyk.io/test/github/bikk-uk/react-css-grid/badge.svg?targetFile=package.json)](https://snyk.io/test/github/bikk-uk/react-css-grid?targetFile=package.json)
