@@ -1,6 +1,6 @@
 {
   "name": "@react-css/grid",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "A thin wrapper to help make CSS Grid simpler and more expressive",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
