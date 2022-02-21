@@ -17,6 +17,12 @@ describe('<GridItem /> - General', () => {
     matchesSnapshot(component, snapshot)
   })
 
+  it('renders an empty grid item with tagName', async () => {
+    const component = <GridItem as='section' />
+    const snapshot = `<section />`
+    matchesSnapshot(component, snapshot)
+  })
+
   it('applies custom style to the div', async () => {
     const component = (
       <GridItem
