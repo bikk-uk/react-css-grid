@@ -26,7 +26,13 @@ import Grid from '@react-css/grid'
 
 ## Usage
 
-All components are `<div />`s with the React typed props fully exposed. Each additional Grid related prop also uses `React.CSSProperties` types (provided by the underlying [csstype](https://www.npmjs.com/package/csstype) library).
+All components are `<div />`s with the React typed props fully exposed. You can change what is rendered for both `<Grid />` and `<Grid.Item />` via the `as` prop:
+
+```tsx
+<Grid as='main'>
+  <MyComponent />
+</Grid>
+```
 
 ### Grid
 
@@ -423,6 +429,19 @@ CSS provided via `styles` will be applied last, this allows all generated CSS to
   </Grid.Item>
 </Grid>
 ```
+
+### Rendering as different elements
+
+If the `as` prop is not provided, it will default to a `<div />`. The supported `as` values are:
+
+- `div`
+- `nav`
+- `main`
+- `aside`
+- `article`
+- `header`
+- `section`
+- `footer`
 
 ### Limitations
 
