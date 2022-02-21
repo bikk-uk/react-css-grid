@@ -21,6 +21,16 @@ describe('<GridContainer /> - General', () => {
     matchesSnapshot(component, snapshot)
   })
 
+  it('renders an empty grid container with tagName', async () => {
+    const component = <GridContainer as='main' />
+    const snapshot = `
+<main
+  style="display: grid;"
+/>
+`
+    matchesSnapshot(component, snapshot)
+  })
+
   it('applies custom style to the div', async () => {
     const component = (
       <GridContainer

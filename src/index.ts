@@ -1,7 +1,7 @@
 // Libraries
 import type { Property } from 'csstype'
 
-type DivProps = React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
+type ContainerProps<ContainerType> = React.DetailedHTMLProps<React.HTMLAttributes<ContainerType>, ContainerType>
 
 export interface IndexableCSS extends React.CSSProperties {
   [key: string]: string | number | undefined
@@ -250,7 +250,17 @@ type PlaceSelfCSS = {
   placeSelf?: Property.PlaceSelf
 }
 
-export type GridContainerProps = DivProps &
+export type ContainerTags = Pick<
+  JSX.IntrinsicElements,
+  'div' | 'nav' | 'main' | 'aside' | 'article' | 'header' | 'section' | 'footer'
+>
+
+type TagName = {
+  // as property for change default div to any html tags
+  as?: keyof ContainerTags
+}
+
+export type GridContainerProps<ContainerType = HTMLDivElement> = ContainerProps<ContainerType> &
   DisplayCSS &
   GridTemplateColumnsCSS &
   GridTemplateRowsCSS &
@@ -267,9 +277,10 @@ export type GridContainerProps = DivProps &
   PlaceContentCSS &
   GridAutoFlowCSS &
   GridAutoRowsCSS &
-  GridAutoColumnsCSS
+  GridAutoColumnsCSS &
+  TagName
 
-export type GridItemProps = DivProps &
+export type GridItemProps<ContainerType = HTMLDivElement> = ContainerProps<ContainerType> &
   GridColumnStartCSS &
   GridColumnEndCSS &
   GridRowStartCSS &
@@ -279,4 +290,5 @@ export type GridItemProps = DivProps &
   GridAreaCSS &
   JustifySelfCSS &
   AlignSelfCSS &
-  PlaceSelfCSS
+  PlaceSelfCSS &
+  TagName

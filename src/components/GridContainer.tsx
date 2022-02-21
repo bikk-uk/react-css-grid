@@ -7,7 +7,7 @@ import { checkOverlapping } from '../helpers/overlapping'
 import { trimUndefined } from '../helpers/trim'
 
 // Types
-import type { GridContainerProps } from '../index'
+import type { GridContainerProps, ContainerTags } from '../index'
 
 function GridContainer({
   // 'display'
@@ -91,6 +91,9 @@ function GridContainer({
 
   // 'grid-auto-columns'
   autoColumns,
+
+  // tag name
+  as: tagName,
 
   // required
   style = {},
@@ -311,10 +314,11 @@ function GridContainer({
     ...style,
   })
 
+  const Tag = (tagName ?? 'div') as keyof ContainerTags
   return (
-    <div style={combinedStyle} {...rest}>
+    <Tag style={combinedStyle} {...rest}>
       {children}
-    </div>
+    </Tag>
   )
 }
 

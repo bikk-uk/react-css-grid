@@ -111,4 +111,34 @@ describe('<GridWrapper />', () => {
 `
     matchesSnapshot(component, snapshot)
   })
+
+  it('renders a grid container with grid items, rendered as different tag names', async () => {
+    const component = (
+      <Grid as='main' alignContentCenter justifyContentSpaceBetween>
+        <Grid.Item as='section' alignSelfStretch>
+          Item 1
+        </Grid.Item>
+        <Grid.Item as='section' alignSelfStretch>
+          Item 2
+        </Grid.Item>
+      </Grid>
+    )
+    const snapshot = `
+<main
+  style="display: grid; justify-content: space-between; align-content: center;"
+>
+  <section
+    style="align-self: stretch;"
+  >
+    Item 1
+  </section>
+  <section
+    style="align-self: stretch;"
+  >
+    Item 2
+  </section>
+</main>
+`
+    matchesSnapshot(component, snapshot)
+  })
 })
